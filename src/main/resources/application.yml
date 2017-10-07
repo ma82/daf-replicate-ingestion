@@ -1,6 +1,9 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
 kafka:
-  bootstrap-servers: localhost:9092
-  topic:
+   topic:
     dummy: dummy.t
 km4city:
   base_url: http://servicemap.disit.org/WebAppGrafo/api/v1/
+  
