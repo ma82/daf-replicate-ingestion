@@ -12,6 +12,8 @@ import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 
+import it.teamDigitale.avro.Event;
+
 /**
  * @author alessandro
  *
@@ -24,10 +26,10 @@ public class Sender {
 	private String topic;
 
 	@Autowired
-	private KafkaTemplate<String, String> kafkaTemplate;
+	private KafkaTemplate<String, Event> kafkaTemplate;
 
-	public ListenableFuture<SendResult<String, String>> send(String payload) {
-		LOGGER.debug("Sending pyaload='{}'", payload);
-		return kafkaTemplate.send(topic, payload);
+	public ListenableFuture<SendResult<String, Event>> send(Event event) {
+		LOGGER.debug("Sending pyaload='{}'", event);
+		return kafkaTemplate.send(topic, event);
 	}
 }

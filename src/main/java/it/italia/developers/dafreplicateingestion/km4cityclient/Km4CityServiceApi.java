@@ -4,12 +4,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
-public class Km4CityServiceSearchApi extends AbstractKm4CityApiRestClient {
+public class Km4CityServiceApi extends AbstractKm4CityApiRestClient {
 
-	public ResponseEntity<String> consume() {
+	public ResponseEntity<String> consume(String serviceUri) {
 		try {
 			ResponseEntity<String> response = this.restTemplate.getForEntity(
-					baseUrl + "?selection=43.7756;11.2490&categories=Accommodation&maxDists=0.2&lang=it&format=json",
+					baseUrl + "?serviceUri=" + serviceUri,
 					String.class);
 			LOGGER.debug(response.getBody());
 			return response;

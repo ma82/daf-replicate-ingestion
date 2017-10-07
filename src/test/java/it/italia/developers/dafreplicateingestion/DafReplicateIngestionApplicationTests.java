@@ -3,6 +3,9 @@ package it.italia.developers.dafreplicateingestion;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Date;
+import java.util.HashMap;
+
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
@@ -18,8 +21,9 @@ import org.springframework.kafka.test.utils.ContainerTestUtils;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.concurrent.ListenableFuture;
 
-import it.italia.developers.dafreplicateingestion.km4cityclient.Km4CityServiceSearchApi;
+import it.italia.developers.dafreplicateingestion.km4cityclient.Km4CityServiceApi;
 import it.italia.developers.dafreplicateingestion.producer.Sender;
+import it.teamDigitale.avro.Event;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,8 +32,8 @@ public class DafReplicateIngestionApplicationTests {
 	@Autowired
 	private Sender sender;
 	
-	@Autowired
-	private Km4CityServiceSearchApi searchServiceApi;
+//	@Autowired
+//	private Km4CityServiceApi serviceApi;
 
 	@Autowired
 	private KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry;
@@ -47,8 +51,17 @@ public class DafReplicateIngestionApplicationTests {
 
 	@Test
 	public void testSender() throws Exception {
-		ResponseEntity<String> response = searchServiceApi.consume();
-		ListenableFuture<SendResult<String, String>> sendResult = sender.send(response.getBody());
+//		String serviceUri = "http://fuffa";
+//		ResponseEntity<String> response = serviceApi.consume(serviceUri);
+		Event event = Event.newBuilder()
+				.setEventTypeId(1)
+				.setTs(new Date().getTime())
+				.setLocation("Ciao")
+				.setHost("http://localhost")
+				.setService("http://localhost/service")
+				.setAttributes(new HashMap<CharSequence, CharSequence>())
+				.build();
+		ListenableFuture<SendResult<String, Event>> sendResult = sender.send(event);
 		assertNotNull(sendResult.get().getProducerRecord());
 		assertEquals("dummy.t", sendResult.get().getProducerRecord().topic());
 		assertNotNull(sendResult.get().getProducerRecord().value());
