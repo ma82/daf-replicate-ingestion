@@ -6,23 +6,27 @@ package it.teamDigitale.dafreplicateingestion.km4cityclient;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author alessandro
  *
  */
+@Service
 public class Km4CitySearchServiceApi extends AbstractKm4CityApiRestClient {
 	
 	public JsonNode consume(Map<String, String> parameters) {
 		try {
 			
-			ResponseEntity<String> response = super.restTemplate.getForEntity(
+			ResponseEntity<String> response = restTemplate.getForEntity(
 					baseUrl,
 					String.class,
 					parameters);
-			JsonNode jsonBody = super.mapper.readTree(response.getBody());
+			ObjectMapper mapper = new ObjectMapper();
+			JsonNode jsonBody = mapper.readTree(response.getBody());
 			
 			LOGGER.debug(response.getBody());	
 			return jsonBody;

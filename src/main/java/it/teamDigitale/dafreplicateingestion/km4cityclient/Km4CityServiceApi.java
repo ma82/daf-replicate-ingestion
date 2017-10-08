@@ -1,23 +1,24 @@
 package it.teamDigitale.dafreplicateingestion.km4cityclient;
 
+import org.json.JSONObject;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-
-import com.fasterxml.jackson.databind.JsonNode;
+import org.springframework.stereotype.Service;;
 
 @Service
 public class Km4CityServiceApi extends AbstractKm4CityApiRestClient {
 
-	public JsonNode consume(String serviceUri) {
+	public JSONObject consume(String serviceUri) {
 		try {
+			final String endpoint =  baseUrl + "?serviceUri=" + serviceUri;
 			
-			ResponseEntity<String> response = super.restTemplate.getForEntity(
-					baseUrl + "?serviceUri=" + serviceUri,
+			ResponseEntity<String> response = restTemplate.getForEntity(
+					endpoint,
 					String.class);
-			JsonNode jsonBody = super.mapper.readTree(response.getBody());
 			
-			LOGGER.debug(response.getBody());	
-			return jsonBody;
+			JSONObject jsonResponse = new JSONObject(response.getBody());
+			
+			LOGGER.info(jsonResponse.toString());	
+			return jsonResponse;
 		} catch(Exception e) {
 			e.printStackTrace();
 			return null;
