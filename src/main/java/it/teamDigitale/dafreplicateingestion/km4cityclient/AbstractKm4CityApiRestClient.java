@@ -5,9 +5,12 @@ package it.teamDigitale.dafreplicateingestion.km4cityclient;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author aletundo
@@ -19,6 +22,8 @@ public abstract class AbstractKm4CityApiRestClient {
 	protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
 	
 	protected RestTemplate restTemplate;
+	@Autowired
+	protected ObjectMapper mapper;
 	
 	@Value("${km4city.base_url}")
 	protected String baseUrl;

@@ -29,7 +29,7 @@ public class Sender {
 	private KafkaTemplate<String, Event> kafkaTemplate;
 
 	public ListenableFuture<SendResult<String, Event>> send(Event event) {
-		LOGGER.debug("Sending pyaload='{}'", event);
+		LOGGER.debug("Sending payload='{}'", event);
 		return kafkaTemplate.send(topic, event);
 	}
 }
