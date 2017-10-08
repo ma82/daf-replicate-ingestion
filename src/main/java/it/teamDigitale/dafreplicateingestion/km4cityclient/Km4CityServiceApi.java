@@ -1,4 +1,4 @@
-package it.italia.developers.dafreplicateingestion.km4cityclient;
+package it.teamDigitale.dafreplicateingestion.km4cityclient;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

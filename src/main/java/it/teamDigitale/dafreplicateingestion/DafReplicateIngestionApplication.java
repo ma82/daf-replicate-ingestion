@@ -1,4 +1,4 @@
-package it.italia.developers.dafreplicateingestion;
+package it.teamDigitale.dafreplicateingestion;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package it.italia.developers.dafreplicateingestion.serializer;
+package it.teamDigitale.dafreplicateingestion.serializer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

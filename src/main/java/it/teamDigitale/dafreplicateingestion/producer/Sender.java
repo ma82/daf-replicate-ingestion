@@ -1,7 +1,7 @@
 /**
  * 
  */
-package it.italia.developers.dafreplicateingestion.producer;
+package it.teamDigitale.dafreplicateingestion.producer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

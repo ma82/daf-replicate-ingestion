@@ -1,7 +1,7 @@
 /**
  * 
  */
-package it.italia.developers.dafreplicateingestion.producer;
+package it.teamDigitale.dafreplicateingestion.producer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +15,8 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 
-import it.italia.developers.dafreplicateingestion.serializer.AvroSerializer;
 import it.teamDigitale.avro.Event;
+import it.teamDigitale.dafreplicateingestion.serializer.AvroSerializer;
 
 /**
  * @author alessandro

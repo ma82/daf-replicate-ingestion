@@ -1,4 +1,4 @@
-package it.italia.developers.dafreplicateingestion;
+package it.teamDigitale.dafreplicateingestion;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -21,9 +21,9 @@ import org.springframework.kafka.test.utils.ContainerTestUtils;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.concurrent.ListenableFuture;
 
-import it.italia.developers.dafreplicateingestion.km4cityclient.Km4CityServiceApi;
-import it.italia.developers.dafreplicateingestion.producer.Sender;
 import it.teamDigitale.avro.Event;
+import it.teamDigitale.dafreplicateingestion.km4cityclient.Km4CityServiceApi;
+import it.teamDigitale.dafreplicateingestion.producer.Sender;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

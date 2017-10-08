@@ -1,7 +1,7 @@
 /**
  * 
  */
-package it.italia.developers.dafreplicateingestion.km4cityclient;
+package it.teamDigitale.dafreplicateingestion.km4cityclient;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
